@@ -2,7 +2,7 @@
 
 A simplified sell flow for a secondhand marketplace where **categories and their listing fields are data, not code**. Admins build each category's form from a shared field library; sellers get a form generated from that configuration; buyers see listings on a homepage and a product detail page.
 
-**Demo:** _link added after deploy_
+**Demo:** https://circle-sell-flow-amber.vercel.app (admin at [/admin](https://circle-sell-flow-amber.vercel.app/admin))
 
 | Page | What it does |
 | --- | --- |
