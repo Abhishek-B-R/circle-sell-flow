@@ -110,10 +110,10 @@ export async function createListing(db: Db, body: unknown) {
 
   const raw = (body ?? {}) as { categoryId?: unknown; attributes?: unknown };
   const categoryId = Number(raw.categoryId);
-  if (!Number.isInteger(categoryId) || categoryId <= 0) throw invalid({ categoryId: "Choose a category" });
+  if (!Number.isInteger(categoryId) || categoryId <= 0) throw invalid({ ...commonErrors, categoryId: "Choose a category" });
 
   const category = await getCategory(db, categoryId).catch(() => {
-    throw invalid({ categoryId: "This category no longer exists" });
+    throw invalid({ ...commonErrors, categoryId: "This category no longer exists" });
   });
   if (!category.isActive) throw new AppError(`${category.name} isn't accepting new listings right now`, 422);
 

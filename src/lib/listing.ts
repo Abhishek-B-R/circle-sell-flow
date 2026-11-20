@@ -19,9 +19,9 @@ export const conditionLabel = (value: string) => CONDITIONS.find((c) => c.value 
 export const MAX_IMAGES = 6;
 
 export const commonListingSchema = z.object({
-  title: z.string().trim().min(5, "Title must be at least 5 characters").max(80, "Title must be at most 80 characters"),
+  title: z.string({ error: "Enter a title" }).trim().min(5, "Title must be at least 5 characters").max(80, "Title must be at most 80 characters"),
   description: z
-    .string()
+    .string({ error: "Add a description" })
     .trim()
     .min(20, "Tell buyers a bit more (at least 20 characters)")
     .max(2000, "Description must be at most 2000 characters"),
@@ -31,8 +31,8 @@ export const commonListingSchema = z.object({
     .min(1, "Price must be at least ₹1")
     .max(10_000_000, "Price must be at most ₹1,00,00,000"),
   condition: z.enum(CONDITIONS.map((c) => c.value) as [ListingCondition, ...ListingCondition[]], { error: "Choose the condition" }),
-  location: z.string().trim().min(2, "Enter your city or area").max(60),
-  sellerName: z.string().trim().min(2, "Enter your name").max(40),
+  location: z.string({ error: "Enter your city or area" }).trim().min(2, "Enter your city or area").max(60),
+  sellerName: z.string({ error: "Enter your name" }).trim().min(2, "Enter your name").max(40),
   images: z
     .array(z.url({ protocol: /^https?$/, error: "Image must be an http(s) link" }))
     .max(MAX_IMAGES, `At most ${MAX_IMAGES} photos`)
