@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-canvas: #f6f5f2;
+  --color-surface: #ffffff;
+  --color-ink: #16150f;
+  --color-ink-2: #4a4840;
+  --color-ink-3: #8a877c;
+  --color-line: #e7e4dc;
+  --color-line-2: #d6d2c6;
+  --color-brand: #0e6b5c;
+  --color-brand-ink: #0a4f44;
+  --color-brand-soft: #e3f1ed;
+  --color-danger: #c2410c;
+  --color-danger-soft: #fdf0e8;
+  --color-warn-soft: #fbf3dc;
+
+  --radius-card: 14px;
+  --shadow-card: 0 1px 2px rgb(22 21 15 / 0.04), 0 4px 16px rgb(22 21 15 / 0.04);
+  --shadow-pop: 0 10px 40px rgb(22 21 15 / 0.14);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+  }
+  ::selection {
+    background: var(--color-brand-soft);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-reveal {
+  animation: reveal 180ms ease-out;
+}
